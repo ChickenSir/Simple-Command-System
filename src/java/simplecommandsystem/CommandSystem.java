@@ -26,10 +26,13 @@ public class CommandSystem {
             // Get command from command list
             Command cmdType = commandList.get(cmd.get(0));
 
-            if (cmdType != null) {
-                // Run command from command list with arguments
+            try {
+                // Run command from command list
                 System.out.println(cmdType.run(cmdArgs));
-            } else {
+            } catch (CommandArgumentException e) {
+                // Invalid command arguments
+                System.out.println(e.getMessage());
+            } catch (NullPointerException e) {
                 // Display error if command does not exist
                 System.out.println("[ERROR] Unknown command '" + cmd.get(0) + "'. Enter 'help' for a list of commands.");
             }

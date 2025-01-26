@@ -1,14 +1,14 @@
 import java.util.List;
 
 public interface Command {
-    public String run(List<String> args);
+    public String run(List<String> args) throws CommandArgumentException;
 }
 
 class HelpCommand implements Command {
     @Override
-    public String run(List<String> args) {
+    public String run(List<String> args) throws CommandArgumentException {
         if (args.size() != 0) {
-            return "[ERROR] Command 'help' takes no arguments";
+            throw new CommandArgumentException("help", 0);
         }
 
         String output = "==========[Command List]==========\n\n"
@@ -24,7 +24,10 @@ class HelpCommand implements Command {
 
 class ExitCommand implements Command {
     @Override
-    public String run(List<String> args) {
+    public String run(List<String> args) throws CommandArgumentException {
+        if (args.size() != 0) {
+            throw new CommandArgumentException("exit", 0);
+        }
         System.exit(0);
 
         return null;
@@ -33,9 +36,9 @@ class ExitCommand implements Command {
 
 class DisplayCommand implements Command {
     @Override
-    public String run(List<String> args) {
+    public String run(List<String> args) throws CommandArgumentException {
         if (args.size() < 1) {
-            return "[ERROR] Command 'display' takes at least one argument";
+            throw new CommandArgumentException("display", 1);
         }
 
         String output = String.join(" ", args);
