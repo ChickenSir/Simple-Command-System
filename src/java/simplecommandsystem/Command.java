@@ -7,7 +7,15 @@ public interface Command {
 class HelpCommand implements Command {
     @Override
     public String run(List<String> args) {
-        String output = "test";
+        if (args.size() != 0) {
+            return "Command 'help' takes no arguments";
+        }
+
+        String output = "==========[Command List]==========\n\n"
+            + "help - Displays a list of commands\n"
+            + "exit - Exits the program\n"
+            + "\n"
+            + "============[Page 1/1]============";
 
         return output;
     }
