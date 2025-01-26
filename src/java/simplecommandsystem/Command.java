@@ -16,7 +16,7 @@ class HelpCommand implements Command {
             + "exit - Exits the program\n"
             + "display - Displays text\n"
             + "\n"
-            + "============[Page 1/1]============";
+            + "==========[Command List]==========";
 
         return output;
     }
