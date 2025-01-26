@@ -1,3 +1,5 @@
+import java.util.List;
+
 interface Command {
-    public void run(String[] agrs);
+    public void run(List<String> args);
 }
