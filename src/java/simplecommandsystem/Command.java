@@ -8,12 +8,13 @@ class HelpCommand implements Command {
     @Override
     public String run(List<String> args) {
         if (args.size() != 0) {
-            return "Command 'help' takes no arguments";
+            return "[ERROR] Command 'help' takes no arguments";
         }
 
         String output = "==========[Command List]==========\n\n"
             + "help - Displays a list of commands\n"
             + "exit - Exits the program\n"
+            + "display - Displays text\n"
             + "\n"
             + "============[Page 1/1]============";
 
@@ -27,5 +28,18 @@ class ExitCommand implements Command {
         System.exit(0);
 
         return null;
+    }
+}
+
+class DisplayCommand implements Command {
+    @Override
+    public String run(List<String> args) {
+        if (args.size() < 1) {
+            return "[ERROR] Command 'display' takes at least one argument";
+        }
+
+        String output = String.join(" ", args);
+
+        return output;
     }
 }
