@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CommandSystem {
     private static HashMap<String, Command> commandList = new HashMap<String, Command>() {{
-        put(null, null);
+        put("help", new HelpCommand());
     }};
 
     public static void main(String[] args) {
@@ -19,7 +19,11 @@ public class CommandSystem {
             List<String> cmdArgs = Arrays.asList(cmd.get(1).split(" "));
             Command cmdType = commandList.get(cmd.get(0));
 
-            cmdType.run(cmdArgs);
+            if (cmdType != null) {
+                System.out.println(cmdType.run(null));
+            } else {
+                System.out.println("[ERROR] Unknown command '" + cmd.get(0) + "'. Enter 'help' for a list of commands.");
+            }
         }
     }
 }

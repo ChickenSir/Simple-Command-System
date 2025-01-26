@@ -1,5 +1,14 @@
 import java.util.List;
 
-interface Command {
-    public void run(List<String> args);
+public interface Command {
+    public String run(List<String> args);
+}
+
+class HelpCommand implements Command {
+    @Override
+    public String run(List<String> args) {
+        String output = "test";
+
+        return output;
+    }
 }
