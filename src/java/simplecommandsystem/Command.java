@@ -12,3 +12,12 @@ class HelpCommand implements Command {
         return output;
     }
 }
+
+class ExitCommand implements Command {
+    @Override
+    public String run(List<String> args) {
+        System.exit(0);
+
+        return null;
+    }
+}

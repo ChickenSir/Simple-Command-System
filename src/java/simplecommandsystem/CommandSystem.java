@@ -7,6 +7,7 @@ import java.util.List;
 public class CommandSystem {
     private static HashMap<String, Command> commandList = new HashMap<String, Command>() {{
         put("help", new HelpCommand());
+        put("exit", new ExitCommand());
     }};
 
     public static void main(String[] args) {
